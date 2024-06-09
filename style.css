@@ -1,0 +1,88 @@
+/* style.css */
+
+/* Reset Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Section Styles */
+section {
+    padding: 50px;
+}
+
+section h2 {
+    margin-top: 0;
+    font-size: 100px;
+}
+
+hr {
+    width: 80%; /* Adjust this to change the length of the line */
+    margin: auto; /* This will center the line */
+}
+
+/* Project Styles */
+.project {
+    margin-bottom: 20px;
+}
+
+.project h3 {
+    margin: 0;
+}
+
+.project p {
+    margin-top: 10px;
+}
+
+.project a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

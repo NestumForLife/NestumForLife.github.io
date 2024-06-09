@@ -1,0 +1,53 @@
+
+body { 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('imgs/galaxy.jpg');
+    background-size: cover; /* This will make sure the image covers the entire body */
+    background-repeat: no-repeat; /* This will prevent the image from repeating */
+    background-color: black;
+    display: flex; 
+    color: white;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    margin: 0; 
+}
+
+textarea { 
+    padding: 20px;
+    font-size: 24px; 
+    font-weight: bold; 
+    border: 2px solid black; 
+}
+
+table { 
+    border: 1px solid black; 
+    margin-left: auto; 
+    margin-right: auto; 
+} 
+
+input[type="button"] { 
+    width: 100%; 
+    padding: 20px 40px; 
+    background-color: rgb(0, 92, 128); 
+    color: white; 
+    font-size: 24px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 5px; 
+} 
+  
+input[type="text"] { 
+    padding: 20px 30px; 
+    font-size: 24px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 5px; 
+    border: 2px solid black; 
+}
+
+textarea#history {
+    border-radius: 10px;
+    min-width: 500px;
+    min-height: 500px;
+}
