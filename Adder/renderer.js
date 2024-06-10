@@ -1,5 +1,17 @@
 const { ipcRenderer } = require('electron');
 const fs = require('fs');
+const { exec } = require('child_process');
+
+document.getElementById('commit-btn').addEventListener('click', () => {
+    exec('git add . && git commit -m "Added Projects to Portfolio" && git push', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`exec error: ${error}`);
+        return;
+      }
+      console.log(`stdout: ${stdout}`);
+      console.error(`stderr: ${stderr}`);
+    });
+  });
 
 document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault();

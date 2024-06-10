@@ -16,22 +16,11 @@ function createWindow () {
     }
   });
   
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
   mainWindow.loadFile('add.html');
 }
 
 app.whenReady().then(createWindow);
-
-document.getElementById('commit-button').addEventListener('click', () => {
-  exec('git add . && git commit -m "Added Projects to Portfolio" && git push', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`exec error: ${error}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
-  });
-});
 
 ipcMain.on('submit', (event, data) => {
   console.log('Received submit event with data:', data);
