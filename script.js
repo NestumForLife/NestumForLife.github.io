@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // ADD PROJECTS SECTION
 document.addEventListener('DOMContentLoaded', (event) => {
-    fetch('Adder/projects.json')
+    fetch('adder/projects.json')
         .then(response => response.json())
         .then(data => {
             data.forEach(project => {
