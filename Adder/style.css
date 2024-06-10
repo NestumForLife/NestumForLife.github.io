@@ -1,10 +1,12 @@
-/* style.css */
+/* BACKGROUND */
 body{
-    background-color: darkgray;
-    color: black;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('galaxy.jpg');
+    background-size: cover; /* This will make sure the image covers the entire body */
+    color: white;
     font-size: 30px;
 }
 
+/* ADD PAGE */
 #project-form label,
 #project-form input {
     display: block;
@@ -12,7 +14,6 @@ body{
 }
 
 #project-form input[type="text"] {
-    border: 2px solid black;
     vertical-align: top;
 }
 
@@ -20,36 +21,89 @@ body{
     width: 500px;
     height: 50px;
     padding: 5px;
-    border: 1px solid black;
     border-radius: 4px;
     vertical-align: top;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 #description {
     width: 500px;
     height: 200px;
     padding: 5px;
-    border: 1px solid black;
     border-radius: 4px;
     vertical-align: top;
-    font-size: xx-large;
+    font-size: x-large;
 }
 
 #submit {
     background-color: #4CAF50;
     color: white;
-    border: 1px solid black;
+    border: 1px solid white;
     padding: 10px 20px;
-    border: none;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
 }
 
 #submit:hover {
-    background-color: #45a049;
+    background-color: #296d2c;
 }
+
+/* BUTTONS TO MOVE BETWEEN PAGES */
+#bck, #next  {
+    font-size: large;
+    background-color: rgb(60, 206, 255);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+}
+
+#commit-btn  {
+    background-color: rgb(60, 206, 255);
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    left: 10px; 
+}
+
+/* EDIT PAGE */
+.edit{
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.edit:hover{
+    background-color: #296d2c;
+}
+
+.delete{
+    background-color: #f44336;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.delete:hover{
+    background-color: #af1f14;
+}
+
+/* EDIT MODAL*/
 
 .edit-form {
     position: fixed;
@@ -57,7 +111,6 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    /* Add other styles as needed */
 }
 
 .modal {

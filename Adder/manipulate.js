@@ -33,13 +33,19 @@ function addProject(title, description, link,id) {
     descriptionElement.textContent = description;
     projectDiv.appendChild(descriptionElement);
 
+    const linkElement = document.createElement('p');
+    linkElement.textContent = link;
+    projectDiv.appendChild(linkElement);
+
     const deleteButton = document.createElement('button');
+    deleteButton.className = 'delete';
     deleteButton.textContent = 'Delete';
     deleteButton.dataset.id = id;
     deleteButton.addEventListener('click', (event) => deleteProject(id));
     projectDiv.appendChild(deleteButton);
 
     const editButton = document.createElement('button');
+    editButton.className = 'edit';
     editButton.textContent = 'Edit';
     editButton.dataset.id = id;
     editButton.addEventListener('click', (event) => editProject(id));
@@ -50,7 +56,8 @@ function addProject(title, description, link,id) {
 }
 
 function editProject(projectId) {
-    projectDiv = document.querySelector(`div[data-id="${projectId}"]`);
+    
+    let projectDiv = document.querySelector(`div[data-id="${projectId}"]`);
 
     let edit = {
         title: '',
@@ -58,6 +65,7 @@ function editProject(projectId) {
         link: '',
         id: projectId
     };
+
 
     fetch('projects.json')
         .then(response => response.json())

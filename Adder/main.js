@@ -1,4 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog } = require('electron');
+const { exec } = require('child_process');
+
 const fs = require('fs');
 const path = require('path');
 
@@ -6,18 +8,30 @@ let mainWindow;
 
 function createWindow () {
   mainWindow = new BrowserWindow({
-    width: 600,
+    width: 550,
     height: 700,
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   });
-  mainWindow.webContents.openDevTools();
+  
+  //mainWindow.webContents.openDevTools();
   mainWindow.loadFile('add.html');
 }
 
 app.whenReady().then(createWindow);
+
+document.getElementById('commit-button').addEventListener('click', () => {
+  exec('git add . && git commit -m "Added Projects to Portfolio" && git push', (error, stdout, stderr) => {
+    if (error) {
+      console.error(`exec error: ${error}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+    console.error(`stderr: ${stderr}`);
+  });
+});
 
 ipcMain.on('submit', (event, data) => {
   console.log('Received submit event with data:', data);
@@ -54,8 +68,6 @@ ipcMain.on('delete-project', (event, projectId) => {
       let projects = JSON.parse(data);
       projects = projects.filter(project => project.id !== projectId);
 
-      //console.log(`Updated projects list: ${JSON.stringify(projects, null, 2)}`);
-
       fs.writeFileSync('projects.json', JSON.stringify(projects, null, 2), 'utf8');
       console.log('Successfully wrote updated project list to file');
   } catch (err) {
@@ -81,6 +93,24 @@ ipcMain.on('save-changes', (event, projectId, newName, newDescription, newLink) 
     id: projectId
   };
   
+  if(!project.title || !project.description || !project.link) {
+    dialog.showMessageBox({
+      type: 'warning',
+      title: 'Validation Error',
+      message: 'Please fill out all fields'
+    });
+    return;
+  }
+  
+  if(detectIfAlreadyExists(project.title)) {
+    dialog.showMessageBox({
+      type: 'warning',
+      title: 'Validation Error',
+      message: 'Project with the same title already exists'
+    });
+    return;
+  }
+
   try {
     let data = fs.readFileSync('projects.json', 'utf8');
     let projects = JSON.parse(data);
@@ -100,3 +130,20 @@ ipcMain.on('save-changes', (event, projectId, newName, newDescription, newLink) 
 
   mainWindow.loadFile('remove.html');
 });
+
+function detectIfAlreadyExists(projectTitle) {
+  // Check if project with the same title already exists
+  const existingProjects = getExistingProjects();
+  const projectExists = existingProjects.some(project => project.title === projectTitle);
+  return projectExists;
+}
+
+function getExistingProjects() {
+  try {
+      const data = fs.readFileSync('projects.json', 'utf8');
+      return JSON.parse(data);
+  } catch (err) {
+      return [];
+  }
+}
+

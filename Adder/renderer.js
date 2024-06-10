@@ -22,6 +22,18 @@ document.getElementById('submit').addEventListener('click', (event) => {
         id: nextProjectId
     };
 
+    console.log(project);
+
+    if(!project.title || !project.description || !project.link) {
+        alert('Please fill out all fields');
+        return;
+    }
+
+    if(detectIfAlreadyExists(project.title)) {
+        alert('Project with the same title already exists');
+        return;
+    }
+    
     // Write the updated nextProjectId back to the file
     try {
         fs.writeFileSync('nextProjectId.json', JSON.stringify({ nextProjectId }), 'utf8');
@@ -35,4 +47,20 @@ document.getElementById('submit').addEventListener('click', (event) => {
 
 function navigateToDelete() {
     ipcRenderer.send('delete', 'remove.html');
+}
+
+function detectIfAlreadyExists(projectTitle) {
+    // Check if project with the same title already exists
+    const existingProjects = getExistingProjects();
+    const projectExists = existingProjects.some(project => project.title === projectTitle);
+    return projectExists;
+}
+
+function getExistingProjects() {
+    try {
+        const data = fs.readFileSync('projects.json', 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        return [];
+    }
 }

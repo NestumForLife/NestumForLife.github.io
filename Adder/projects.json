@@ -1,3 +1,8 @@
 [
-  
+  {
+    "title": "Calculator",
+    "description": "Its a simple Calculator made in HTML, CSS and JavaScript.\nIt can make operation of addiction, subtraction, multiplication and division, of integers and floats.",
+    "link": "projects/calculator/index.html",
+    "id": 1
+  }
 ]

@@ -12,10 +12,11 @@
             <label for="description">Description:</label>
             <textarea id="description" name="description"></textarea>
             <label for="link">Link:</label>
-            <textarea id="link" name="link"></textarea>
+            <textarea id="link" name="link" >projects/</textarea>
             <input type="submit" id="submit" value="Submit">
         </form>
-        <a href="#" onclick="navigateToDelete()">Delete Projects</a>
+        <a href="#" id="next" onclick="navigateToDelete()">Projects</a>
+        <button id="commit-btn">Commit Changes</button>
         <script src="renderer.js"></script>
     </body>
 </html>
