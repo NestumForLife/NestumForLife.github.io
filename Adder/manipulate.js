@@ -87,8 +87,7 @@ function editProject(projectId) {
                     nameLabel.textContent = 'Name:';
                     form.appendChild(nameLabel);
 
-                    const nameInput = document.createElement('input');
-                    nameInput.type = 'text';
+                    const nameInput = document.createElement('textarea');
                     nameInput.value = edit.title;
                     nameInput.id = 'name-input';
                     form.appendChild(nameInput);
@@ -97,23 +96,22 @@ function editProject(projectId) {
                     descriptionLabel.textContent = 'Description:';
                     form.appendChild(descriptionLabel);
 
-                    const descriptionInput = document.createElement('input');
-                    descriptionInput.type = 'text';
+                    const descriptionInput = document.createElement('textarea');
                     descriptionInput.value = edit.description;
                     descriptionInput.id = 'description-input';
                     form.appendChild(descriptionInput);
 
                     const linkLabel = document.createElement('label');
-                    linkLabel.textContent = 'Link:';
+                    linkLabel.textContent = 'Path:';
                     form.appendChild(linkLabel);
 
-                    const linkInput = document.createElement('input');
-                    linkInput.type = 'text';
+                    const linkInput = document.createElement('textarea');
                     linkInput.value = edit.link;
                     linkInput.id = 'link-input';
                     form.appendChild(linkInput);
 
                     const saveButton = document.createElement('button');
+                    saveButton.className = 'save';
                     saveButton.textContent = 'Save';
                     saveButton.addEventListener('click', (event) => {
                         event.preventDefault();
@@ -127,6 +125,7 @@ function editProject(projectId) {
                     form.appendChild(saveButton);
 
                     const cancelButton = document.createElement('button');
+                    cancelButton.className = 'cancel';
                     cancelButton.textContent = 'Cancel';
                     cancelButton.addEventListener('click', (event) => {
                         event.preventDefault();

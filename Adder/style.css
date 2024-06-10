@@ -76,7 +76,7 @@ body{
 }
 
 /* EDIT PAGE */
-.edit{
+.edit, .save{
     background-color: #4CAF50;
     color: white;
     border: 1px solid white;
@@ -86,11 +86,11 @@ body{
     margin-left: 5px;
 }
 
-.edit:hover{
+.edit:hover, .save:hover{
     background-color: #296d2c;
 }
 
-.delete{
+.delete, .cancel{
     background-color: #f44336;
     color: white;
     border: 1px solid white;
@@ -99,7 +99,7 @@ body{
     cursor: pointer;
 }
 
-.delete:hover{
+.delete:hover, .cancel:hover{
     background-color: #af1f14;
 }
 
@@ -111,6 +111,12 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 80%;
 }
 
 .modal {
@@ -122,27 +128,26 @@ body{
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top */
     z-index: 1000;
-  }
-  
-  .edit-form {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 500px;
-    width: 80%;
-  }
+}
   
   .edit-form label {
     display: block;
     margin-top: 10px;
   }
   
-  .edit-form input {
+  .edit-form textarea {
     width: 90%;
+    height: 15px;
     padding: 10px;
     margin-top: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    vertical-align: top;
+  }
+
+  #description-input {
+    height: 200px;
+    vertical-align: top;
   }
